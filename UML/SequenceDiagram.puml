@@ -1,0 +1,21 @@
+@startuml
+actor User
+participant "Web UI" as UI
+participant "Backend API" as API
+participant "F1DataService" as S
+participant "FastF1 Client" as F
+
+User -> UI : Select race + drivers
+User -> UI : Choose insight type
+UI -> API : GET /insights(request)
+
+API -> S : buildInsights(request)
+S -> F : loadSession(selection)
+F --> S : session data
+
+S -> S : compute insight (lap/position/tyre)
+S --> API : InsightResult
+API --> UI : JSON result
+UI --> User : Show chart
+
+@enduml
