@@ -1,0 +1,18 @@
+@startuml
+' Communication diagram with numbered messages
+object "User" as U
+object "Web UI" as UI
+object "Backend API" as API
+object "F1DataService" as S
+object "FastF1 Library" as F
+
+U  -> UI  : 1. select race & drivers
+UI -> API : 2. GET /insights(request)
+API -> S  : 3. buildInsights(request)
+S  -> F   : 4. loadSessionData(season,race,session)
+F  --> S  : 5. session data
+S  --> API: 6. insight result (chart data)
+API --> UI: 7. JSON response
+UI --> U  : 8. render chart
+
+@enduml
