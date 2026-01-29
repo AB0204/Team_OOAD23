@@ -1,0 +1,15 @@
+@startuml
+package "Client" {
+  [Web UI]
+}
+
+package "Server" {
+  [Backend API]
+  [F1DataService]
+  [FastF1 Client]
+}
+
+[Web UI] --> [Backend API] : HTTP/JSON
+[Backend API] --> [F1DataService]
+[F1DataService] --> [FastF1 Client]
+@enduml 
