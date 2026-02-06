@@ -18,7 +18,6 @@ User --> UC3
 User --> UC4
 User --> UC5
 
-' Secondary actor interaction (keeps it simple and valid)
 DataSrc --> UC1
 DataSrc --> UC3
 DataSrc --> UC4
@@ -29,7 +28,7 @@ UC4 .> UC2 : <<include>>
 UC5 .> UC2 : <<include>>
 
 note right of User
-The User is the primary actor and represents a fan or analyst who interacts with the system to explore F1 race data. The user chooses a race session, selects up to two drivers, and views multiple charts to understand performance and strategy in a simple, visual way.
+The User is the primary actor and represents a fan or analyst who interacts with the system to explore F1 race data. The user selects a race session, chooses up to two drivers, and views multiple charts to understand performance and strategy in a simple way.
 end note
 
 note left of DataSrc
@@ -49,7 +48,7 @@ This use case displays a lap time comparison for the selected drivers in the cho
 end note
 
 note bottom of UC4
-This use case shows how the selected drivers’ positions change across laps. It helps the user see overtakes and position gains/losses during the session.
+This use case shows how the selected drivers’ positions change across laps. It helps the user see overtakes and position gains or losses during the session.
 end note
 
 note bottom of UC5
