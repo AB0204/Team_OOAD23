@@ -1,6 +1,5 @@
 @startuml
 left to right direction
-skinparam handwritten true
 allow_mixing
 
 actor User
