@@ -1,1 +1,23 @@
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
 
+actor "User (Fan/Analyst)" as User
+actor "FastF1 Data Source" as DataSrc
+
+class "Tyre Stints View" as UI <<boundary>>
+class "TyreStrategyController" as C <<control>>
+class "DriverSelection" as Sel <<entity>>
+class "TyreStintData" as Stint <<entity>>
+class "PitStopData" as Pit <<entity>>
+
+User --> UI : open tyre stints
+UI --> C : loadStints()
+C --> Sel : read selected drivers
+C --> DataSrc : fetch tyre + pit data
+DataSrc --> C : tyre + pit data
+C --> Stint : store stints
+C --> Pit : store pit stops
+C --> UI : render stint timeline
+@enduml
