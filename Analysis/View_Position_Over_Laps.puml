@@ -1,1 +1,22 @@
 
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+actor "User (Fan/Analyst)" as User
+actor "FastF1 Data Source" as DataSrc
+
+class "Position Over Laps View" as UI <<boundary>>
+class "PositionAnalysisController" as C <<control>>
+class "DriverSelection" as Sel <<entity>>
+class "PositionData" as Data <<entity>>
+
+User --> UI : open position chart
+UI --> C : loadPositions()
+C --> Sel : read selected drivers
+C --> DataSrc : fetch positions
+DataSrc --> C : position data
+C --> Data : store positions
+C --> UI : render chart
+@enduml
