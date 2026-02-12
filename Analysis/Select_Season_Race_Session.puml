@@ -1,1 +1,21 @@
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
 
+actor "User (Fan/Analyst)" as User
+actor "FastF1 Data Source" as DataSrc
+
+class "Season/Race/Session Selection UI" as UI <<boundary>>
+class "SessionSelectionController" as C <<control>>
+class "SessionContext" as Ctx <<entity>>
+class "SessionList" as List <<entity>>
+
+User --> UI : choose season/race/session
+UI --> C : submitSelection()
+C --> DataSrc : fetchSessions()
+DataSrc --> C : sessions data
+C --> List : store sessions
+C --> Ctx : set selected session
+C --> UI : show confirmation
+@enduml
