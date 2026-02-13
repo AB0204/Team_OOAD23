@@ -1,7 +1,5 @@
 @startuml
 left to right direction
-!option handwritten true
-skinparam handwritten true
 skinparam backgroundColor white
 allow_mixing
 
