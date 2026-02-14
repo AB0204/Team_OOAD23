@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+skinparam backgroundColor white
+!option handwritten true
+
+
+actor "F1 Fan / Analyst" as User
+actor "FastF1 API" as API
+
+rectangle "F1 Robustness Analysis App" {
+    usecase "Select Season, Race & Session" as UC1
+    usecase "Select Drivers" as UC2
+    usecase "View Lap Time Comparison" as UC3
+    usecase "View Position Over Laps" as UC4
+    usecase "View Tyre Stints" as UC5
+}
+
+User -- UC1
+User -- UC2
+User -- UC3
+User -- UC4
+User -- UC5
+
+UC1 -- API : Fetches Data
+UC2 -- API : Fetches Driver List
+UC3 -- API : Fetches Lap Times
+UC4 -- API : Fetches Position Data
+UC5 -- API : Fetches Stint Data
+@enduml
