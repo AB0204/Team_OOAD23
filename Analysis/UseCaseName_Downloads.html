@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Download Use Case Files</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 40px;
+            background: #eef;
+            text-align: center;
+        }
+
+        .file-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-box h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        a.btn {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        a.btn:hover {
+            background: #0056b3;
+        }
+
+        .path {
+            font-family: monospace;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+            background: #f0f0f0;
+            padding: 5px;
+            display: block;
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Download Use Case Diagram Files</h1>
+    <p>Click the buttons to open/download, or copy the paths to upload.</p>
+
+    <div class="file-box">
+        <h2>1. PDF File</h2>
+        <a href="UseCaseName.pdf" class="btn" download>Download UseCaseName.pdf</a>
+        <div class="path">/Users/abhiabhardwaj/Analysis/UseCaseName.pdf</div>
+    </div>
+
+    <div class="file-box">
+        <h2>2. PNG Image</h2>
+        <a href="UseCaseName.png" class="btn" download>Download UseCaseName.png</a>
+        <div class="path">/Users/abhiabhardwaj/Analysis/UseCaseName.png</div>
+    </div>
+
+    <div class="file-box">
+        <h2>3. PlantUML Source (.puml)</h2>
+        <a href="UseCaseName.puml" class="btn" download>Download UseCaseName.puml</a>
+        <div class="path">/Users/abhiabhardwaj/Analysis/UseCaseName.puml</div>
+    </div>
+
+</body>
+
+</html>

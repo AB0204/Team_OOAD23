@@ -1,21 +1,20 @@
 @startuml
 left to right direction
+!option handwritten true
+skinparam handwritten true
 skinparam backgroundColor white
+allow_mixing
 
-actor "User" as User
-
+actor User
 boundary "Lap Time Comparison View" as GUI
 control "Lap Time Controller" as CTRL
 control "Chart Generator" as CHART
-entity "Selected Drivers" as DRIVERS
 entity "Lap Time Data" as DATA
+entity "Selected Drivers" as DRIVERS
 
-User --> GUI : request lap time comparison
-GUI --> CTRL : load comparison
-
-CTRL --> DRIVERS : get selected drivers
-CTRL --> DATA : fetch lap times
-CTRL --> CHART : generate comparison chart
-CHART --> GUI : return chart
-GUI --> User : display chart
+User -- GUI : Requests Comparison
+GUI -- CTRL : Load Comparison Data
+CTRL -- DRIVERS : Get Selected Drivers
+CTRL -- DATA : Fetch Lap Times
+CTRL -- CHART : Process Data for Chart
 @enduml
