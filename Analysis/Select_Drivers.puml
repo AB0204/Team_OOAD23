@@ -1,16 +1,17 @@
 @startuml
 left to right direction
 skinparam backgroundColor white
-allow_mixing
 
-actor User
+actor "User" as User
 boundary "Driver Selection View" as GUI
 control "Driver Controller" as CTRL
 entity "Driver List" as DRIVERS
 entity "Active Session" as SESSION
 
-User -- GUI : Selects Drivers
-GUI -- CTRL : Request Driver List
-CTRL -- SESSION : Get Current Session
-CTRL -- DRIVERS : Load/Validate Drivers
+User --> GUI : select drivers
+GUI --> CTRL : submit selection / request list
+CTRL --> SESSION : get current session
+CTRL --> DRIVERS : load available drivers
+CTRL --> DRIVERS : validate selected drivers
+CTRL --> GUI : show confirmation / errors
 @enduml
