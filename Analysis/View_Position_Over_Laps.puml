@@ -3,7 +3,6 @@ left to right direction
 skinparam backgroundColor white
 
 actor "User" as User
-
 boundary "Position Tracking View" as GUI
 control "Position Controller" as CTRL
 control "Chart Generator" as CHART
@@ -12,10 +11,10 @@ entity "Position Data" as POS
 
 User --> GUI : request position chart
 GUI --> CTRL : load position data
-
 CTRL --> SESSION : get total laps / session context
 CTRL --> POS : fetch position history
 CTRL --> CHART : generate position chart
-CHART --> GUI : return chart
+CHART --> CTRL : return chart
+CTRL --> GUI : return chart
 GUI --> User : display chart
 @enduml
