@@ -12,10 +12,8 @@ entity "Tyre Compound Info" as TYRE
 
 User --> GUI : request tyre strategy
 GUI --> CTRL : load tyre stints
-
 CTRL --> API : request stint data
 API --> CTRL : return stint data
-
 CTRL --> STINT : store stint data
 CTRL --> TYRE : map compounds / resolve labels
 CTRL --> GUI : show stint visualization
