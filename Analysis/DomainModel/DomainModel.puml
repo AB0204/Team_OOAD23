@@ -1,0 +1,79 @@
+@startuml
+skinparam backgroundColor white
+skinparam classAttributeIconSize 0
+skinparam classFontSize 14
+skinparam classAttributeFontSize 12
+left to right direction
+
+class Season {
+  year : int
+  name : String
+}
+
+class Race {
+  name : String
+  location : String
+  round : int
+  date : Date
+}
+
+class Session {
+  type : String
+  date : Date
+  totalLaps : int
+}
+
+class Driver {
+  name : String
+  abbreviation : String
+  number : int
+}
+
+class Team {
+  name : String
+  color : String
+}
+
+class LapTime {
+  lapNumber : int
+  time : Duration
+  sector1 : Duration
+  sector2 : Duration
+  sector3 : Duration
+}
+
+class Position {
+  lapNumber : int
+  position : int
+}
+
+class TyreStint {
+  stintNumber : int
+  startLap : int
+  endLap : int
+}
+
+class TyreCompound {
+  name : String
+  color : String
+  hardness : String
+}
+
+class Chart {
+  title : String
+  xAxisLabel : String
+  yAxisLabel : String
+}
+
+Season "1" -- "*" Race : contains >
+Race "1" -- "*" Session : has >
+Session "*" -- "*" Driver : participates in >
+Driver "*" -- "1" Team : belongs to >
+Driver "1" -- "*" LapTime : records >
+Driver "1" -- "*" Position : holds >
+Driver "1" -- "*" TyreStint : uses >
+TyreStint "*" -- "1" TyreCompound : of type >
+LapTime "*" -- "1" Chart : visualized in >
+Position "*" -- "1" Chart : visualized in >
+
+@enduml
