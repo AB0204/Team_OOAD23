@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor white
+scale 2
+
+title Activity Diagram: View Tyre Stints
+
+|User|
+start
+:Request Tyre Stint visualization;
+
+|System|
+:Retrieve selected drivers;
+:Fetch stint data for each driver\nfrom FastF1 API;
+
+if (Stint data available?) then (yes)
+  :Parse stint information\n(start lap, end lap, compound);
+  :Map tyre compounds to colors\n(Soft=Red, Medium=Yellow, Hard=White);
+  :Generate stint visualization\n(horizontal bar chart);
+  :Render visualization on screen;
+
+  |User|
+  :Analyze tyre strategies;
+  :Compare pit stop timing\nand compound choices;
+
+else (no)
+  :Display error message\n"Stint data not available\nfor selected drivers";
+endif
+
+stop
+
+@enduml
+
+' ============================================================
+' ACTIVITY DIAGRAM TEXT DESCRIPTION
+' ============================================================
+' Use Case: View Tyre Stints
+'
+' Step 1: The User requests the Tyre Stint visualization.
+' Step 2: The System retrieves the list of selected drivers.
+' Step 3: The System fetches stint data for each selected
+'         driver from the FastF1 API.
+' Step 4: The System checks if stint data is available.
+'         - If NO: Display an error message indicating
+'           stint data is not available.
+'         - If YES: Proceed to Step 5.
+' Step 5: The System parses the stint information including
+'         start lap, end lap, and tyre compound used.
+' Step 6: The System maps tyre compounds to their standard
+'         colors (Soft=Red, Medium=Yellow, Hard=White).
+' Step 7: The System generates a horizontal bar chart
+'         visualizing the stint strategy for each driver.
+' Step 8: The System renders the visualization on screen.
+' Step 9: The User analyzes tyre strategies and compares
+'         pit stop timing and compound choices between
+'         the selected drivers.
+' ============================================================
