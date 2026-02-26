@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor white
+scale 2
+
+title Activity Diagram: View Position Over Laps
+
+|User|
+start
+:Request Position Over Laps chart;
+
+|System|
+:Retrieve selected drivers;
+:Get session context\n(total laps, race info);
+:Fetch position history data\nfor each driver from FastF1 API;
+
+if (Position data available?) then (yes)
+  :Process position data\nfor each lap;
+  :Map driver positions\nacross all laps;
+  :Generate position tracking chart\n(line chart with positions);
+  :Render chart on screen;
+
+  |User|
+  :Analyze position changes;
+  :Identify overtakes and\nposition gains/losses;
+
+else (no)
+  :Display error message\n"Position data not available\nfor selected drivers";
+endif
+
+stop
+
+@enduml
+
+' ============================================================
+' ACTIVITY DIAGRAM TEXT DESCRIPTION
+' ============================================================
+' Use Case: View Position Over Laps
+'
+' Step 1: The User requests the Position Over Laps chart.
+' Step 2: The System retrieves the list of selected drivers.
+' Step 3: The System gets the session context including
+'         total laps and race information.
+' Step 4: The System fetches position history data for each
+'         selected driver from the FastF1 API.
+' Step 5: The System checks if position data is available.
+'         - If NO: Display an error message indicating
+'           position data is not available.
+'         - If YES: Proceed to Step 6.
+' Step 6: The System processes the position data for each
+'         lap of the session.
+' Step 7: The System maps driver positions across all laps.
+' Step 8: The System generates a line chart showing position
+'         tracking over the course of the race.
+' Step 9: The System renders the chart on the screen.
+' Step 10: The User analyzes position changes and identifies
+'          overtakes and position gains or losses.
+' ============================================================

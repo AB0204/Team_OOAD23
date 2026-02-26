@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor white
+scale 2
+
+title Activity Diagram: Select Season, Race & Session
+
+|User|
+start
+:Open the F1 Analysis Application;
+
+|System|
+:Display available seasons from FastF1 API;
+
+|User|
+:Select a season (year);
+
+|System|
+:Fetch list of races for the selected season;
+:Display available races;
+
+|User|
+:Select a race (Grand Prix);
+
+|System|
+:Fetch list of sessions for the selected race;
+:Display available sessions\n(Practice, Qualifying, Race);
+
+|User|
+:Select a session type;
+
+|System|
+if (Session data available?) then (yes)
+  :Load session data from FastF1 API;
+  :Display confirmation of loaded session;
+else (no)
+  :Display error message\n"Session data not available";
+  stop
+endif
+
+stop
+
+@enduml
+
+' ============================================================
+' ACTIVITY DIAGRAM TEXT DESCRIPTION
+' ============================================================
+' Use Case: Select Season, Race & Session
+'
+' Step 1: The User opens the F1 Analysis Application.
+' Step 2: The System displays a list of available seasons
+'         retrieved from the FastF1 API.
+' Step 3: The User selects a season (year).
+' Step 4: The System fetches the list of races for the
+'         selected season and displays them.
+' Step 5: The User selects a race (Grand Prix).
+' Step 6: The System fetches available sessions for the
+'         selected race (Practice, Qualifying, Race)
+'         and displays them.
+' Step 7: The User selects a session type.
+' Step 8: The System checks if session data is available.
+'         - If YES: Load session data from FastF1 API and
+'           display a confirmation message.
+'         - If NO: Display an error message indicating
+'           the session data is not available.
+' ============================================================

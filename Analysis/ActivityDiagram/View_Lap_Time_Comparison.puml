@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor white
+scale 2
+
+title Activity Diagram: View Lap Time Comparison
+
+|User|
+start
+:Request Lap Time Comparison;
+
+|System|
+:Retrieve selected drivers;
+:Fetch lap time data for each driver\nfrom FastF1 API;
+
+if (Lap time data available?) then (yes)
+  :Process and align lap time data;
+  :Calculate time differences;
+  :Generate comparison chart\n(line chart with lap times);
+  :Render chart on screen;
+
+  |User|
+  :Analyze lap time trends;
+  :Identify fastest laps and\nperformance gaps;
+
+else (no)
+  :Display error message\n"Lap time data not available\nfor selected drivers";
+endif
+
+stop
+
+@enduml
+
+' ============================================================
+' ACTIVITY DIAGRAM TEXT DESCRIPTION
+' ============================================================
+' Use Case: View Lap Time Comparison
+'
+' Step 1: The User requests lap time comparison view.
+' Step 2: The System retrieves the list of selected drivers.
+' Step 3: The System fetches lap time data for each selected
+'         driver from the FastF1 API.
+' Step 4: The System checks if lap time data is available.
+'         - If NO: Display an error message indicating
+'           lap time data is not available.
+'         - If YES: Proceed to Step 5.
+' Step 5: The System processes and aligns the lap time data
+'         for all selected drivers.
+' Step 6: The System calculates time differences between
+'         drivers across laps.
+' Step 7: The System generates a line chart visualizing
+'         lap times for comparison.
+' Step 8: The System renders the chart on the screen.
+' Step 9: The User analyzes lap time trends and identifies
+'         fastest laps and performance gaps between drivers.
+' ============================================================
