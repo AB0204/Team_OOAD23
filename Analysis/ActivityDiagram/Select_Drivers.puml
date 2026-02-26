@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor white
+scale 2
+
+title Activity Diagram: Select Drivers
+
+|User|
+start
+:Navigate to Driver Selection screen;
+
+|System|
+:Retrieve list of drivers\nfor the active session;
+:Display available drivers\nwith name and abbreviation;
+
+|User|
+:Select one or more drivers\nfrom the list;
+
+|System|
+if (At least 2 drivers selected?) then (yes)
+  :Validate selected drivers;
+  if (All drivers valid for session?) then (yes)
+    :Confirm driver selection;
+    :Enable analysis options;
+  else (no)
+    :Display error\n"Invalid driver for this session";
+  endif
+else (no)
+  :Display warning\n"Select at least 2 drivers to compare";
+endif
+
+stop
+
+@enduml
+
+' ============================================================
+' ACTIVITY DIAGRAM TEXT DESCRIPTION
+' ============================================================
+' Use Case: Select Drivers
+'
+' Step 1: The User navigates to the Driver Selection screen.
+' Step 2: The System retrieves the list of drivers
+'         available for the currently active session.
+' Step 3: The System displays the available drivers
+'         with their name and abbreviation.
+' Step 4: The User selects one or more drivers from the list.
+' Step 5: The System checks if at least 2 drivers are selected.
+'         - If NO: Display a warning message asking the user
+'           to select at least 2 drivers for comparison.
+'         - If YES: Proceed to Step 6.
+' Step 6: The System validates the selected drivers against
+'         the active session data.
+'         - If all drivers are valid: Confirm the selection
+'           and enable analysis options.
+'         - If any driver is invalid: Display an error
+'           message indicating the invalid driver.
+' ============================================================
